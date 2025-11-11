@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Layers, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
@@ -12,9 +13,7 @@ function App() {
             <span className="text-2xl font-bold text-slate-800">DeckStack</span>
           </div>
           <div className="hidden md:flex space-x-8">
-            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Blog</a>
-            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Über uns</a>
-            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Kontakt</a>
+            <Link to = "/blog">Blog</Link>
           </div>
         </div>
       </nav>
