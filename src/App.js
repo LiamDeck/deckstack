@@ -12,9 +12,9 @@ function App() {
             <span className="text-2xl font-bold text-slate-800">DeckStack</span>
           </div>
           <div className="hidden md:flex space-x-8">
-            <a href="#" className="text-slate-600 hover:text-slate-800 transition-colors">Blog</a>
-            <a href="#" className="text-slate-600 hover:text-slate-800 transition-colors">Über uns</a>
-            <a href="#" className="text-slate-600 hover:text-slate-800 transition-colors">Kontakt</a>
+            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Blog</a>
+            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Über uns</a>
+            <a href="www.google.com" className="text-slate-600 hover:text-slate-800 transition-colors">Kontakt</a>
           </div>
         </div>
       </nav>
