@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { BookOpen, Layers, ArrowRight } from 'lucide-react';
 import Blog from './Blog';
 
