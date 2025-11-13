@@ -1,78 +1,103 @@
 // src/App.js
-import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import { BookOpen, Layers, ArrowRight } from 'lucide-react';
+import { Layers, Mail, Linkedin, Instagram } from 'lucide-react';
 import Blog from './Blog';
-
-// Home-Komponente für die Startseite
-function Home() {
-  return (
-    <main className="container mx-auto px-6 py-20">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm mb-8">
-          <BookOpen className="w-4 h-4 text-slate-600" />
-          <span className="text-sm text-slate-600">Wissen gestapelt, Ideen entfaltet</span>
-        </div>
-        
-        <h1 className="text-6xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-          Dein Blog für<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-500">
-            gestapelte Gedanken
-          </span>
-        </h1>
-        
-        <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
-          DeckStack bringt Ideen, Wissen und Inspiration zusammen. 
-          Entdecke Artikel, die zum Nachdenken anregen und deine Perspektive erweitern.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="group bg-slate-800 text-white px-8 py-4 rounded-lg hover:bg-slate-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2" type="button">
-            <span className="font-medium">Artikel entdecken</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <button className="bg-white text-slate-800 px-8 py-4 rounded-lg hover:bg-slate-50 transition-all shadow-md border border-slate-200" type="button">
-            <span className="font-medium">Newsletter abonnieren</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Feature Cards und weitere Home-Inhalte können hier ebenfalls rein */}
-    </main>
-  );
-}
+import Home from './Home';
+import Kontakt from './Kontakt';
+import UeberMich from './UeberMich';
 
 function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Navigation (immer sichtbar) */}
-      <nav className="container mx-auto px-6 py-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Layers className="w-8 h-8 text-slate-800" />
-            <span className="text-2xl font-bold text-slate-800">DeckStack</span>
-          </div>
-          <div className="hidden md:flex space-x-8">
-            <Link to="/">Home</Link> {/* Link zur Startseite */}
-            <Link to="/blog">Blog</Link> {/* Link zum Blog */}
+      {/* Navigation (immer sichtbar, mobile-first) */}
+      <nav className="bg-white/80 backdrop-blur border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 py-4 md:px-6">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center space-x-2">
+              <Layers className="w-7 h-7 text-slate-800" />
+              <span className="text-xl md:text-2xl font-bold text-slate-800">
+                DeckStack
+              </span>
+            </Link>
+
+            {/* Links sind nun auch mobil sichtbar */}
+            <div className="flex space-x-4 text-sm md:text-base">
+              <Link
+                to="/"
+                className="text-slate-700 hover:text-slate-900"
+              >
+                Home
+              </Link>
+              <Link
+                to="/blog"
+                className="text-slate-700 hover:text-slate-900"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/uebermich"
+                className="text-slate-700 hover:text-slate-900"
+              >
+                Über mich
+              </Link>
+              <Link
+                to="/kontakt"
+                className="text-slate-700 hover:text-slate-900"
+              >
+                Kontakt
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Routing-Bereich */}
       <Routes>
+        {/* Home unter / und /home erreichbar */}
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+
         <Route path="/blog" element={<Blog />} />
+        <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/uebermich" element={<UeberMich />} />
       </Routes>
 
       {/* Footer (immer sichtbar) */}
-      <footer className="container mx-auto px-6 py-12 mt-20">
-        <div className="border-t border-slate-200 pt-8 text-center text-slate-600">
+      <footer className="max-w-5xl mx-auto px-4 md:px-6 py-10 mt-16">
+        <div className="border-t border-slate-200 pt-6 flex flex-col items-center gap-4 text-slate-600 text-sm">
+          {/* Icon-Leiste */}
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:hello@deckstack.dev"
+              className="text-slate-500 hover:text-slate-900 transition-colors"
+              aria-label="E-Mail an DeckStack"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/liam-deck/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-500 hover:text-slate-900 transition-colors"
+              aria-label="DeckStack auf LinkedIn"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              className="text-slate-500 hover:text-slate-900 transition-colors"
+              aria-label="DeckStack auf Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
+
           <p>© 2025 DeckStack. Alle Rechte vorbehalten.</p>
         </div>
       </footer>
     </div>
-
   );
 }
 
