@@ -1,5 +1,4 @@
-import { BookOpen} from 'lucide-react';
-
+import { BookOpen } from 'lucide-react';
 
 function UeberMich() {
   return (
@@ -7,9 +6,9 @@ function UeberMich() {
       <div className="grid gap-10 md:grid-cols-[2fr,1.2fr] items-start">
         {/* Text-Bereich */}
         <section>
-          <div className="inline-flex items-center space-x-2 bg-white px-3 py-1.5 rounded-full shadow-sm mb-6">
-            <BookOpen className="w-4 h-4 text-slate-600" />
-            <span className="text-xs sm:text-sm text-slate-600">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-50 to-white px-3 py-1.5 rounded-full shadow-sm border border-indigo-100 mb-6">
+            <BookOpen className="w-4 h-4 text-indigo-600" />
+            <span className="text-xs sm:text-sm text-indigo-600 font-medium">
               Über mich
             </span>
           </div>
@@ -40,22 +39,26 @@ function UeberMich() {
         </section>
 
         {/* Side-Card mit Facts */}
-        <aside className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-7">
-          <h2 className="text-lg font-semibold text-slate-900 mb-4">
+        <aside className="bg-white rounded-2xl shadow-sm border border-indigo-100 p-6 md:p-7">
+          <h2 className="text-lg font-semibold text-slate-900 mb-4 pb-3 border-b border-indigo-50">
             Kurz & knapp
           </h2>
           <ul className="space-y-3 text-sm text-slate-700">
-            <li>
-              • Fokus: Webentwicklung, KI, Produktivität
+            <li className="flex items-start">
+              <span className="text-indigo-500 mr-2 font-bold">•</span>
+              <span>Fokus: Webentwicklung, KI, Produktivität</span>
             </li>
-            <li>
-              • Lieblings-Stack: React, Tailwind, Python
+            <li className="flex items-start">
+              <span className="text-indigo-500 mr-2 font-bold">•</span>
+              <span>Lieblings-Stack: React, Tailwind, Python</span>
             </li>
-            <li>
-              • Schreibstil: verständlich, praxisnah, neugierig
+            <li className="flex items-start">
+              <span className="text-indigo-500 mr-2 font-bold">•</span>
+              <span>Schreibstil: verständlich, praxisnah, neugierig</span>
             </li>
-            <li>
-              • Ziel: Inhalte, die dir wirklich weiterhelfen
+            <li className="flex items-start">
+              <span className="text-indigo-500 mr-2 font-bold">•</span>
+              <span>Ziel: Inhalte, die dir wirklich weiterhelfen</span>
             </li>
           </ul>
         </aside>

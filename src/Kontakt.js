@@ -2,7 +2,7 @@ function Kontakt() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-12 md:px-6 md:py-20">
       <div className="grid gap-10 lg:grid-cols-[1.4fr,1fr] items-start">
-        {/* Kontakt-Formular (Dummy) */}
+        {/* Kontakt-Formular */}
         <section>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Lass uns in Kontakt bleiben
@@ -14,7 +14,7 @@ function Kontakt() {
             ich freue mich über jedes konstruktive Signal im Posteingang.
           </p>
 
-          <form className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-7 space-y-5">
+          <form className="bg-white rounded-2xl shadow-sm border border-indigo-100 p-6 md:p-7 space-y-5">
             <div className="space-y-1.5">
               <label
                 htmlFor="name"
@@ -26,7 +26,7 @@ function Kontakt() {
                 id="name"
                 type="text"
                 placeholder="Wie darf ich dich nennen?"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/60 focus:border-slate-500"
+                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
               />
             </div>
 
@@ -41,7 +41,7 @@ function Kontakt() {
                 id="email"
                 type="email"
                 placeholder="dein.name@example.com"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/60 focus:border-slate-500"
+                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
               />
             </div>
 
@@ -56,22 +56,22 @@ function Kontakt() {
                 id="nachricht"
                 rows={4}
                 placeholder="Worum geht's?"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-500/60 focus:border-slate-500"
+                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
               />
             </div>
 
             <button
               type="button"
-              className="w-full sm:w-auto inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-slate-800 text-white text-sm font-medium hover:bg-slate-700 transition-colors shadow-md hover:shadow-lg"
+              className="w-full sm:w-auto inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg"
             >
               Nachricht (noch) nicht senden
             </button>
           </form>
         </section>
 
-        {/* Kontakt-Infos (Dummy) */}
-        <aside className="bg-slate-900 text-slate-50 rounded-2xl p-6 md:p-7 space-y-4">
-          <h2 className="text-lg font-semibold mb-2">
+        {/* Kontakt-Infos */}
+        <aside className="bg-gradient-to-br from-slate-900 to-indigo-950 text-slate-50 rounded-2xl p-6 md:p-7 space-y-4 border border-indigo-900/50">
+          <h2 className="text-lg font-semibold mb-2 text-indigo-100">
             Kontakt-Details
           </h2>
           <p className="text-sm text-slate-200">
@@ -82,7 +82,7 @@ function Kontakt() {
           <div className="space-y-2 text-sm">
             <p>
               E-Mail (demnächst):<br />
-              <span className="text-slate-100">hello@deckstack.dev</span>
+              <span className="text-indigo-200 font-medium">hello@deckstack.dev</span>
             </p>
             <p>
               Typische Themen:<br />
@@ -92,9 +92,9 @@ function Kontakt() {
             </p>
           </div>
 
-          <p className="text-xs text-slate-300 pt-2">
+          <p className="text-xs text-slate-300 pt-2 border-t border-indigo-900/30">
             Hinweis: Das Formular sendet aktuell noch nichts ab.
-            Später wird hier eine echte Schnittstelle (z. B. API / Form-Service) eingebunden.
+            Später wird hier eine echte Schnittstelle (z. B. API / Form-Service) eingebunden.
           </p>
         </aside>
       </div>

@@ -1,0 +1,270 @@
+/* Mobile-First: Base Styles */
+.blog-post-container {
+  max-width: 720px;
+  padding: 1.5rem;
+  margin: 3rem auto 0 auto;
+  background-color: #ffffff;
+  min-height: 100vh;
+  border-radius: 1rem;
+}
+
+.blog-post-container article {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+/* Back Button - minimalistischer Stil */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  background: none;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+  border: none;
+  border-bottom: none !important; /* sicherheitshalber verhindern */
+}
+
+/* FIX: Kein Unterstrich / keine Border beim Hover */
+.back-button:hover {
+  color: #667eea;
+  border-bottom-color: transparent !important;
+  text-decoration: none !important;
+}
+
+/* Typography */
+.blog-post-container h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1e293b;
+  margin: 2rem 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.blog-post-container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #334155;
+  margin: 2rem 0 1rem 0;
+  padding-top: 1rem;
+  border-top: 2px solid #f1f5f9;
+}
+
+.blog-post-container h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #475569;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.blog-post-container p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #334155;
+  margin: 0 0 1.5rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.blog-post-container strong {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Lists */
+.blog-post-container ul,
+.blog-post-container ol {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-post-container li {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post-container li strong {
+  color: #667eea;
+}
+
+/* Code Blocks */
+.blog-post-container pre {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post-container code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.blog-post-container p code {
+  background-color: #f1f5f9;
+  color: #667eea;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+/* Tables */
+.blog-post-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.blog-post-container th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.blog-post-container td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.9375rem;
+}
+
+.blog-post-container tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-post-container tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Blockquotes */
+.blog-post-container blockquote {
+  border-left: 4px solid #667eea;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #64748b;
+  background-color: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Links (für Markdown-Inhalt) */
+.blog-post-container a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.blog-post-container a:hover {
+  color: #764ba2;
+  border-bottom-color: #764ba2;
+}
+
+/* Horizontal Rule */
+.blog-post-container hr {
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  margin: 3rem 0;
+}
+
+/* Meta */
+.blog-post-container article > p:first-of-type {
+  color: #64748b;
+  font-size: 0.9375rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.125rem;
+  color: #64748b;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .blog-post-container {
+    padding: 3rem 2rem;
+  }
+
+  .blog-post-container h1 {
+    font-size: 2.5rem;
+  }
+
+  .blog-post-container h2 {
+    font-size: 1.875rem;
+  }
+
+  .blog-post-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .blog-post-container p,
+  .blog-post-container li {
+    font-size: 1.125rem;
+  }
+
+  .blog-post-container pre {
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .blog-post-container {
+    padding: 4rem 2rem;
+  }
+
+  .blog-post-container h1 {
+    font-size: 3rem;
+    margin: 3rem 0 1.5rem 0;
+  }
+
+  .blog-post-container h2 {
+    font-size: 2rem;
+    margin: 2.5rem 0 1.25rem 0;
+  }
+}
+
+/* Print */
+@media print {
+  .blog-post-container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .back-button {
+    display: none;
+  }
+
+  .blog-post-container pre {
+    background: #f8fafc;
+    color: #1e293b;
+  }
+}
