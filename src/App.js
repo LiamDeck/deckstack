@@ -10,11 +10,14 @@ import UeberMich from './UeberMich';
 import Ressourcen from './Ressourcen';
 import BlogPost from './BlogPost';
 import LoginPage from './LoginPage';
+import RegistrierungErfolgreich from './RegistrierungErfolgreich'; // NEU
+
 
 function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     // Session beim Start laden
@@ -23,6 +26,7 @@ function App() {
       setLoading(false);
     });
 
+
     // Auf Auth-Änderungen hören
     const {
       data: { subscription },
@@ -30,13 +34,16 @@ function App() {
       setSession(session);
     });
 
+
     return () => subscription.unsubscribe();
   }, []);
+
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setSession(null);
   };
+
 
   if (loading) {
     return (
@@ -45,6 +52,7 @@ function App() {
       </div>
     );
   }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -58,6 +66,7 @@ function App() {
                 DeckStack
               </span>
             </Link>
+
 
             <div className="flex items-center space-x-2">
               {/* Desktop links (hidden on mobile) */}
@@ -93,6 +102,7 @@ function App() {
                   Kontakt
                 </Link>
 
+
                 {/* Conditional Login/Logout Button */}
                 {session ? (
                   <button
@@ -112,6 +122,7 @@ function App() {
                 )}
               </div>
 
+
               {/* Mobile menu button */}
               <button
                 onClick={() => setMobileOpen((s) => !s)}
@@ -125,6 +136,7 @@ function App() {
           </div>
         </div>
       </nav>
+
 
       {/* Mobile dropdown menu (visible when mobileOpen) */}
       {mobileOpen && (
@@ -167,6 +179,7 @@ function App() {
                 Kontakt
               </Link>
 
+
               {/* Mobile Login/Logout */}
               {session ? (
                 <button
@@ -193,6 +206,7 @@ function App() {
         </div>
       )}
 
+
       {/* Routing-Bereich */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -203,7 +217,9 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/uebermich" element={<UeberMich />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/registrierung-erfolgreich" element={<RegistrierungErfolgreich />} /> {/* NEU */}
       </Routes>
+
 
       {/* Footer (immer sichtbar) */}
       <footer className="max-w-5xl mx-auto px-4 md:px-6 py-10 mt-16">
@@ -237,11 +253,13 @@ function App() {
             </a>
           </div>
 
+
           <p>© 2025 DeckStack. Alle Rechte vorbehalten.</p>
         </div>
       </footer>
     </div>
   );
 }
+
 
 export default App;
