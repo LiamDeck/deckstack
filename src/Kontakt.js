@@ -1,101 +1,207 @@
+import React, { useState } from 'react';
+import { Mail, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+
 function Kontakt() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [showNotice, setShowNotice] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowNotice(true);
+    setTimeout(() => setShowNotice(false), 4000);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <main className="max-w-5xl mx-auto px-4 py-12 md:px-6 md:py-20">
-      <div className="grid gap-10 lg:grid-cols-[1.4fr,1fr] items-start">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm mb-6 border border-indigo-100">
+          <Mail className="w-4 h-4 text-indigo-600" />
+          <span className="text-sm text-indigo-600">
+            Lass uns connecten
+          </span>
+        </div>
+
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+          Kontakt
+        </h1>
+
+        <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+          Fragen, Feedback oder Themenvorschläge? Ich freue mich über jede Nachricht!
+        </p>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-[1.5fr,1fr] items-start">
         {/* Kontakt-Formular */}
         <section>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Lass uns in Kontakt bleiben
-          </h1>
+          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg border border-slate-100 p-6 md:p-8 space-y-6">
+            {/* Success Notice */}
+            {showNotice && (
+              <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium text-amber-900">
+                    Formular noch nicht aktiv
+                  </p>
+                  <p className="text-sm text-amber-700 mt-1">
+                    Die Kontaktfunktion wird bald implementiert. Aktuell werden keine Nachrichten versendet.
+                  </p>
+                </div>
+              </div>
+            )}
 
-          <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-8 leading-relaxed">
-            Du hast eine Frage, Feedback zu einem Artikel oder eine Idee für ein Thema,
-            das hier nicht fehlen darf? Schreib mir einfach eine Nachricht – 
-            ich freue mich über jedes konstruktive Signal im Posteingang.
-          </p>
-
-          <form className="bg-white rounded-2xl shadow-sm border border-indigo-100 p-6 md:p-7 space-y-5">
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-slate-800"
+                className="flex items-center gap-2 text-sm font-semibold text-slate-800"
               >
+                <MessageSquare className="w-4 h-4 text-indigo-600" />
                 Name
               </label>
               <input
                 id="name"
+                name="name"
                 type="text"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Wie darf ich dich nennen?"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
+                required
+                className="w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-800"
+                className="flex items-center gap-2 text-sm font-semibold text-slate-800"
               >
+                <Mail className="w-4 h-4 text-indigo-600" />
                 E-Mail
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="dein.name@example.com"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
+                required
+                className="w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label
-                htmlFor="nachricht"
-                className="block text-sm font-medium text-slate-800"
+                htmlFor="message"
+                className="flex items-center gap-2 text-sm font-semibold text-slate-800"
               >
+                <Send className="w-4 h-4 text-indigo-600" />
                 Nachricht
               </label>
               <textarea
-                id="nachricht"
-                rows={4}
-                placeholder="Worum geht's?"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:border-indigo-500 transition-colors"
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={6}
+                placeholder="Worum geht's? Teile mir deine Gedanken mit..."
+                required
+                className="w-full rounded-lg border-2 border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all resize-none"
               />
             </div>
 
             <button
-              type="button"
-              className="w-full sm:w-auto inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg"
+              type="submit"
+              className="group w-full sm:w-auto inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Nachricht (noch) nicht senden
+              <span>Nachricht senden</span>
+              <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
         </section>
 
-        {/* Kontakt-Infos */}
-        <aside className="bg-gradient-to-br from-slate-900 to-indigo-950 text-slate-50 rounded-2xl p-6 md:p-7 space-y-4 border border-indigo-900/50">
-          <h2 className="text-lg font-semibold mb-2 text-indigo-100">
-            Kontakt-Details
-          </h2>
-          <p className="text-sm text-slate-200">
-            Aktuell ist das hier noch eine Spielwiese für Ideen – 
-            die Kontaktfunktion ist also mehr Konzept als fertiges Produkt.
-          </p>
-
-          <div className="space-y-2 text-sm">
-            <p>
-              E-Mail (demnächst):<br />
-              <span className="text-indigo-200 font-medium">hello@deckstack.dev</span>
-            </p>
-            <p>
-              Typische Themen:<br />
-              • Feedback zu Artikeln<br />
-              • Themenvorschläge<br />
-              • kleine Kollaborationen
+        {/* Kontakt-Infos Cards */}
+        <aside className="space-y-6">
+          {/* Info Card */}
+          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100 shadow-md">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-indigo-100 rounded-lg">
+                <Mail className="w-5 h-5 text-indigo-600" />
+              </div>
+              <h2 className="text-lg font-bold text-slate-900">
+                E-Mail Kontakt
+              </h2>
+            </div>
+            
+            <a 
+              href="mailto:Liam.Deck@gmx.de"
+              className="text-indigo-600 hover:text-indigo-700 font-semibold text-lg transition-colors"
+            >
+              Liam.Deck@gmx.de
+            </a>
+            
+            <p className="text-sm text-slate-600 mt-3">
+              Für direkte Anfragen kannst du mir auch eine E-Mail schreiben.
             </p>
           </div>
 
-          <p className="text-xs text-slate-300 pt-2 border-t border-indigo-900/30">
-            Hinweis: Das Formular sendet aktuell noch nichts ab.
-            Später wird hier eine echte Schnittstelle (z. B. API / Form-Service) eingebunden.
-          </p>
+          {/* Topics Card */}
+          <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-md">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-purple-100 rounded-lg">
+                <MessageSquare className="w-5 h-5 text-purple-600" />
+              </div>
+              <h2 className="text-lg font-bold text-slate-900">
+                Typische Themen
+              </h2>
+            </div>
+            
+            <ul className="space-y-2.5 text-sm text-slate-700">
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+                Feedback zu Artikeln
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+                Themenvorschläge für den Blog
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+                Fragen zu Technologien
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
+                Kollaborationsmöglichkeiten
+              </li>
+            </ul>
+          </div>
+
+          {/* Notice Card */}
+          <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-sm font-semibold text-slate-800 mb-1">
+                  In Entwicklung
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Das Formular sendet aktuell noch nichts ab. Später wird hier eine echte 
+                  Schnittstelle implementiert.
+                </p>
+              </div>
+            </div>
+          </div>
         </aside>
       </div>
     </main>

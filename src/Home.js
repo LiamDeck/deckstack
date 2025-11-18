@@ -1,11 +1,22 @@
-// src/Home.js
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, ArrowRight, X } from 'lucide-react';
+import { BookOpen, ArrowRight, X, Calendar, User, Tag } from 'lucide-react';
+import postsData from './posts.json';
 
 function Home() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [latestPost, setLatestPost] = useState(null);
+
+  useEffect(() => {
+    // Posts nach Datum sortieren und den neuesten auswählen
+    const sortedPosts = [...postsData].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    if (sortedPosts.length > 0) {
+      setLatestPost(sortedPosts[0]);
+    }
+  }, []);
 
   const handleNewsletterClick = () => {
     if (isAnimating) return;
@@ -15,6 +26,15 @@ function Home() {
       setIsAnimating(false);
       setShowModal(true);
     }, 900);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('de-DE', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   return (
@@ -41,7 +61,6 @@ function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* Blog-Link */}
             <Link
               to="/blog"
               className="group bg-indigo-700 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg hover:bg-indigo-600 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm md:text-base"
@@ -50,7 +69,6 @@ function Home() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            {/* Newsletter Button */}
             <div className="relative inline-flex">
               {isAnimating && (
                 <>
@@ -71,6 +89,74 @@ function Home() {
             </div>
           </div>
         </div>
+
+        {/* Neuester Blog-Beitrag */}
+        {latestPost && (
+          <section className="mt-20">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                Neuester Beitrag
+              </h2>
+              <Link
+                to="/blog"
+                className="text-indigo-600 hover:text-indigo-700 font-medium text-sm md:text-base flex items-center gap-1"
+              >
+                Alle Beiträge
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <Link
+              to={`/blog/${latestPost.slug}`}
+              className="block group"
+            >
+              <article className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-100">
+                <div className="p-6 md:p-8">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {latestPost.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium"
+                      >
+                        <Tag className="w-3 h-3" />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Titel */}
+                  <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                    {latestPost.title}
+                  </h3>
+
+                  {/* Beschreibung */}
+                  <p className="text-slate-600 text-base md:text-lg mb-6 line-clamp-2">
+                    {latestPost.description}
+                  </p>
+
+                  {/* Meta-Informationen */}
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4" />
+                      <span>{formatDate(latestPost.date)}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <User className="w-4 h-4" />
+                      <span>{latestPost.author}</span>
+                    </div>
+                  </div>
+
+                  {/* Read More */}
+                  <div className="mt-6 flex items-center text-indigo-600 font-medium group-hover:gap-2 transition-all">
+                    <span>Weiterlesen</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </article>
+            </Link>
+          </section>
+        )}
       </main>
 
       {/* Modal */}

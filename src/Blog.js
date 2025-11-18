@@ -1,30 +1,13 @@
 import { Link } from 'react-router-dom';
+import { Tag } from 'lucide-react';
+import postsData from './posts.json';
 import './Blog.css';
 
 function Blog() {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Was sind LLMs und wie funktionieren diese?",
-      excerpt: "Large Language Models verstehen: Von Grundlagen über Training bis zur praktischen Anwendung...",
-      date: "18. November 2025",
-      slug: "was-sind-llms"
-    },
-    {
-      id: 2,
-      title: "Agentic AI und die Unterschiede zu AI Workflows",
-      excerpt: "Autonome KI-Agenten vs. klassische Workflows: Wie unterscheiden sie sich und wann nutzt man was?",
-      date: "18. November 2025",
-      slug: "agentic-ai-vs-workflows"
-    },
-    {
-      id: 3,
-      title: "Wofür braucht man MCP Server?",
-      excerpt: "Model Context Protocol: Die Brücke zwischen KI-Modellen und externen Datenquellen erklärt...",
-      date: "18. November 2025",
-      slug: "mcp-server-erklaert"
-    }
-  ];
+  // Posts nach Datum sortieren (neueste zuerst)
+  const blogPosts = [...postsData].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
 
   return (
     <div className="blog-page">
@@ -40,8 +23,18 @@ function Blog() {
         <div className="blog-grid">
           {blogPosts.map(post => (
             <div key={post.id} className="blog-card">
+              {/* Tags anzeigen */}
+              <div className="blog-tags">
+                {post.tags.map((tag, index) => (
+                  <span key={index} className="blog-tag">
+                    <Tag className="tag-icon" />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
               <h3>{post.title}</h3>
-              <p className="date">{post.date}</p>
+              <p className="date">{post.dateFormatted}</p>
               <p className="excerpt">{post.excerpt}</p>
               <Link to={`/blog/${post.slug}`} className="read-more">
                 Weiterlesen →

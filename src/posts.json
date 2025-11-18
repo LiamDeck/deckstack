@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Was sind LLMs und wie funktionieren diese?",
+    "excerpt": "Large Language Models verstehen: Von Grundlagen über Training bis zur praktischen Anwendung...",
+    "description": "Large Language Models verstehen: Von Grundlagen über Training bis zur praktischen Anwendung. Ein tiefer Einblick in die Technologie hinter ChatGPT und Co.",
+    "date": "2025-11-18",
+    "dateFormatted": "18. November 2025",
+    "slug": "was-sind-llms",
+    "author": "DeckStack",
+    "tags": ["AI", "LLM", "Machine Learning"]
+  },
+  {
+    "id": 2,
+    "title": "Agentic AI und die Unterschiede zu AI Workflows",
+    "excerpt": "Autonome KI-Agenten vs. klassische Workflows: Wie unterscheiden sie sich und wann nutzt man was?",
+    "description": "Autonome KI-Agenten vs. klassische Workflows: Wie unterscheiden sie sich und wann nutzt man was? Eine detaillierte Analyse moderner AI-Architekturen.",
+    "date": "2025-11-18",
+    "dateFormatted": "18. November 2025",
+    "slug": "agentic-ai-vs-workflows",
+    "author": "DeckStack",
+    "tags": ["AI", "Agentic AI", "Workflows"]
+  },
+  {
+    "id": 3,
+    "title": "Wofür braucht man MCP Server?",
+    "excerpt": "Model Context Protocol: Die Brücke zwischen KI-Modellen und externen Datenquellen erklärt...",
+    "description": "Model Context Protocol: Die Brücke zwischen KI-Modellen und externen Datenquellen erklärt. Wie MCP Server die Integration von AI-Systemen revolutionieren.",
+    "date": "2025-11-18",
+    "dateFormatted": "18. November 2025",
+    "slug": "mcp-server-erklaert",
+    "author": "DeckStack",
+    "tags": ["MCP", "AI", "Integration"]
+  }
+]
